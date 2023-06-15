@@ -57,6 +57,7 @@ const Navbar = () => {
           ref={btnRef}
           // colorScheme="yellow"
           onClick={onOpen}
+          _hover={{ cursor: "pointer" }}
         />
         <Drawer
           isOpen={isOpen}
