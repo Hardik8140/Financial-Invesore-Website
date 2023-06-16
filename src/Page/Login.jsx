@@ -1,11 +1,8 @@
 import {
   Box,
   Center,
-  Container,
   Divider,
   FormControl,
-  FormErrorMessage,
-  FormHelperText,
   FormLabel,
   Heading,
   Image,
@@ -13,64 +10,107 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Navigate, Link as RouterLink } from "react-router-dom";
+
+import axios from "axios";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 const Login = () => {
+  const { isAuth, loginUsers } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(false);
+
+    try {
+      let res = await axios.get(`https://growfin.onrender.com/users`);
+      let users = res.data;
+      let user = users.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (user) {
+        loginUsers();
+      } else {
+        setError("Invalid Email and Password.");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError("Failed to fetch user data.");
+    }
+  };
+
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <Box>
-      <Box p="70px" display="flex" justifyContent="center" bg="black">
-        <Box>
+      <Center p="70px" bg="black">
+        <form onSubmit={handleSubmit}>
           <FormControl>
             <Heading color="white" textDecoration="underline" mb={3}>
               Welcome Back!
             </Heading>
             <FormLabel color="white">Email :</FormLabel>
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              w="400px"
-              border="1px solid #00ff0a"
-              color="white"
-              _hover={{ border: "1px solid #00ff0a", bg: "brand.100" }}
-              mb={3}
-            />
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Input
+                value={email}
+                name="email"
+                type="email"
+                w="400px"
+                border="1px solid #00ff0a"
+                color="white"
+                _hover={{ border: "1px solid #00ff0a", bg: "brand.100" }}
+                mb={3}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </Box>
             <FormLabel color="white">Password :</FormLabel>
-            <Input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              w="400px"
-              border="1px solid #00ff0a"
-              color="white"
-              _hover={{
-                border: "1px solid #00ff0a",
-                bg: "brand.100",
-                boxShadow: "lg",
-              }}
-              mb={3}
-            />
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Input
+                required
+                value={password}
+                name="password"
+                type="password"
+                w="400px"
+                border="1px solid #00ff0a"
+                color="white"
+                _hover={{
+                  border: "1px solid #00ff0a",
+                  bg: "brand.100",
+                  boxShadow: "lg",
+                }}
+                mb={3}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Input
+                color="white"
+                border="1px solid #00ff0a"
+                w="400px"
+                type="submit"
+                variant="solid"
+                bg="black"
+                colorScheme="green"
+                mt={5}
+                _hover={{
+                  color: "black",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  bg: "#00ff0a",
+                  textDecoration: "underline",
+                }}
+              />
+            </Box>
           </FormControl>
-          <Input
-            type="submit"
-            w="400px"
-            border="1px solid #00ff0a"
-            color="white"
-            mt={5}
-            _hover={{
-              color: "black",
-              fontWeight: "bold",
-              cursor: "pointer",
-              bg: "#00ff0a",
-              textDecoration: "underline",
-            }}
-          />
-        </Box>
-      </Box>
+        </form>
+      </Center>
       <Box
         color="white"
         textAlign="center"

@@ -10,6 +10,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -19,10 +20,21 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let useData = { name, email, password, phone };
+
+    try {
+      let res = await axios.post(`https://growfin.onrender.com/users`, useData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Box>
-      <Box p="70px" display="flex" justifyContent="center" bg="black" pb="80px">
-        <Box>
+      <Center p="70px" bg="black" pb="80px">
+        <form onSubmit={handleSubmit}>
           <FormControl>
             <Heading color="white" textDecoration="underline" mb={3}>
               Create Your Account..
@@ -95,8 +107,8 @@ const SignUp = () => {
               textDecoration: "underline",
             }}
           />
-        </Box>
-      </Box>
+        </form>
+      </Center>
 
       <Box
         color="white"

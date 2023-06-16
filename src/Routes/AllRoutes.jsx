@@ -7,6 +7,8 @@ import Security from "../Page/Security";
 import Faq from "../Page/Faq";
 import Login from "../Page/Login";
 import SignUp from "../Page/signup";
+import PrivateRoute from "./privateRouter";
+import IeData from "../Page/ieData";
 
 const AllRoutes = () => {
   return (
@@ -16,6 +18,14 @@ const AllRoutes = () => {
         <Route path="/docs" element={<Docs />} />
         <Route path="/security" element={<Security />} />
         <Route path="/faq" element={<Faq />} />
+        <Route
+          path="/ieData"
+          element={
+            <PrivateRoute>
+              <IeData />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

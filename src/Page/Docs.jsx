@@ -1,11 +1,19 @@
 import {
   Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardFooter,
   Center,
   Divider,
   Heading,
   Image,
+  ListItem,
   SimpleGrid,
+  Stack,
   Text,
+  UnorderedList,
 } from "@chakra-ui/react";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -36,6 +44,137 @@ const Docs = () => {
         />
         {/* </SimpleGrid> */}
       </Box>
+
+      <Heading textAlign="center" color="white" mb="50px">
+        Our Upgraded Plans
+      </Heading>
+      <Center>
+        <SimpleGrid w="90%" columns={3} spacing="40px" pb="60px">
+          <Card maxW="sm" p={3} borderRadius="20px" bg="black" color="white">
+            <CardBody textAlign="center">
+              <Heading>Pro</Heading>
+              <Stack mt="6" spacing="3">
+                <Text>
+                  Connect our Investor and Entrepreneurs to get some idealogy
+                  and Grow your Business
+                </Text>
+                <Text color="Yellow" fontSize="2xl">
+                  $2,000.00/year
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider />
+            <Center>
+              <CardFooter>
+                <Button
+                  bg="brand.100"
+                  color="white"
+                  _hover={{
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Buy Now
+                </Button>
+              </CardFooter>
+            </Center>
+            <Heading size="sm">The best benefits of Pro:</Heading>
+            <UnorderedList>
+              <ListItem>Connect with 5 Investors</ListItem>
+              <ListItem>Coneect with 5 Entrepreneurs</ListItem>
+              <ListItem>Take best deal</ListItem>
+              <ListItem>
+                In a Month one time you can meet with the investors and
+                Entrepreneurs support{" "}
+              </ListItem>
+            </UnorderedList>
+          </Card>
+
+          <Card maxW="sm" p={3} borderRadius="20px" bg="black" color="white">
+            <CardBody textAlign="center">
+              <Heading>Pro+</Heading>
+              <Stack mt="6" spacing="3">
+                <Text>
+                  Connect our Investor,Entrepreneurs to get some idealogy and
+                  Grow your Business
+                </Text>
+                <Text color="Yellow" fontSize="2xl">
+                  $4,000.00/year
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider />
+            <Center>
+              <CardFooter>
+                <Button
+                  bg="brand.100"
+                  color="white"
+                  _hover={{
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Buy Now
+                </Button>
+              </CardFooter>
+            </Center>
+            <Heading size="sm">The best benefits of Pro:</Heading>
+            <UnorderedList>
+              <ListItem>Connect with 10 Investors</ListItem>
+              <ListItem>Coneect with 10 Entrepreneurs</ListItem>
+              <ListItem>Take best deal</ListItem>
+              <ListItem>
+                In a Month two time you can meet with the investors and
+                Entrepreneurs support
+              </ListItem>
+            </UnorderedList>
+          </Card>
+
+          <Card maxW="sm" p={3} borderRadius="20px" bg="black" color="white">
+            <CardBody textAlign="center">
+              <Heading>Premium</Heading>
+              <Stack mt="6" spacing="3" textAlign="center">
+                <Text>
+                  Connect our Investor and Entrepreneurs to get some idealogy
+                  and Grow your Business
+                </Text>
+                <Text color="Yellow" fontSize="2xl">
+                  $6,000.00/year
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider />
+            <Center>
+              <CardFooter>
+                <Button
+                  bg="brand.100"
+                  color="white"
+                  _hover={{
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Buy Now
+                </Button>
+              </CardFooter>
+            </Center>
+            <Heading size="sm">The best benefits of Pro:</Heading>
+            <UnorderedList>
+              <ListItem>Connect with Multiple Investors</ListItem>
+              <ListItem>Coneect with Multiple Entrepreneurs</ListItem>
+              <ListItem>Take best deal</ListItem>
+              <ListItem>
+                In a Month multiple time you can meet with the investors and
+                Entrepreneurs support{" "}
+              </ListItem>
+            </UnorderedList>
+          </Card>
+        </SimpleGrid>
+      </Center>
+
       <Heading color="white" textAlign="center" pt="40px">
         Our Mission
       </Heading>
