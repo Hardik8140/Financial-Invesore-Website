@@ -45,66 +45,84 @@ const Navbar = () => {
       <RouterLink to="/">
         <Image src="logo.png" boxSize="60px" />
       </RouterLink>
-      <Box display="flex" width="50%" textAlign="center">
-        {links.map((link) => (
-          <RouterLink key={link.path} to={link.path} className={style.btn}>
-            {link.title}
-          </RouterLink>
-        ))}
 
-        <HamburgerIcon
-          color="yellow"
-          ref={btnRef}
-          // colorScheme="yellow"
-          onClick={onOpen}
-          _hover={{ cursor: "pointer" }}
-        />
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          finalFocusRef={btnRef}
+      <Box
+        // border="1px solid red"
+        display="flex"
+        w="40%"
+        justifyContent="space-evenly"
+      >
+        <Box
+          display={{ base: "none", md: "flex" }}
+          width="90%"
+          textAlign="center"
         >
-          <DrawerOverlay />
-          <DrawerContent bgGradient="linear(to-t, black, brand.100)">
-            <DrawerHeader
-              color="yellow.100"
-              textAlign="center"
-              textDecoration="underline"
-              fontSize="xx-large"
-            >
-              Grow Finance
-            </DrawerHeader>
+          {links.map((link) => (
+            <RouterLink key={link.path} to={link.path} className={style.btn}>
+              {link.title}
+            </RouterLink>
+          ))}
+        </Box>
 
-            <DrawerBody
-              display="flex"
-              flexDirection="column"
-              color="yellow.100"
-              // border="1px solid white"
-              m={4}
-              alignItems="center"
-              // marginBottom="30px"
-            >
-              {links.map((link) => (
-                <RouterLink
-                  key={link.path}
-                  to={link.path}
-                  className={style.links}
-                >
-                  {link.title}
+        <Box>
+          <HamburgerIcon
+            color="yellow"
+            ref={btnRef}
+            // colorScheme="yellow"
+            onClick={onOpen}
+            _hover={{ cursor: "pointer" }}
+          />
+          <Drawer
+            isOpen={isOpen}
+            placement="right"
+            onClose={onClose}
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent bgGradient="linear(to-t, black, brand.100)">
+              <DrawerHeader
+                color="yellow.100"
+                textAlign="center"
+                textDecoration="underline"
+                fontSize="xx-large"
+              >
+                Grow Finance
+              </DrawerHeader>
+
+              <DrawerBody
+                display="flex"
+                flexDirection="column"
+                color="yellow.100"
+                // border="1px solid white"
+
+                m={4}
+                alignItems="center"
+                // marginBottom="30px"
+              >
+                {links.map((link) => (
+                  <RouterLink
+                    key={link.path}
+                    to={link.path}
+                    className={style.links}
+                  >
+                    {link.title}
+                  </RouterLink>
+                ))}
+                <RouterLink to="/ieData" className={style.links}>
+                  Connect People
                 </RouterLink>
-              ))}
-              <RouterLink to="/login" className={style.links}>
-                Login
-              </RouterLink>
-              <RouterLink to="/signup" className={style.links}>
-                SignUp
-              </RouterLink>
-            </DrawerBody>
+                <RouterLink to="/login" className={style.links}>
+                  Login
+                </RouterLink>
+                <RouterLink to="/signup" className={style.links}>
+                  SignUp
+                </RouterLink>
+              </DrawerBody>
 
-            <DrawerFooter></DrawerFooter>
-          </DrawerContent>
-        </Drawer>
+              <DrawerFooter></DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </Box>
       </Box>
     </Box>
   );

@@ -1,14 +1,16 @@
 import style from "./App.css";
-import { Container, theme } from "@chakra-ui/react";
+import { Box, Container, theme } from "@chakra-ui/react";
 import Navbar from "./Routes/Navbar";
 import AllRoutes from "./Routes/AllRoutes";
 
 function App() {
   return (
-    <Container maxW="container.xlsm" className={theme}>
+    // <Container minW="1310px" className={theme}>
+    <Box>
       <Navbar />
       <AllRoutes />
-    </Container>
+    </Box>
+    // </Container>
   );
 }
 

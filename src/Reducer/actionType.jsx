@@ -1,0 +1,5 @@
+export const GET_USERS_REQUEST = "GET_JOBS_REQUEST";
+
+export const GET_USERS_SUCCESS = "GET_JOBS_SUCCESS";
+
+export const GET_USERS_FAILURE = "GET_JOBS_FAILURE";

@@ -19,122 +19,178 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import Slider from "react-slick";
+import CenterMode from "../Components/carousel";
 
 const HomePage = () => {
   const { isOpen, onToggle } = useDisclosure();
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 3,
+    speed: 1000,
+  };
+
   return (
     <Container maxW="container.xsm" bg="black">
       <Center>
-        <Image src="BlackLogo.png" boxSize="12em" mt="50px" />
+        <Image
+          src="BlackLogo.png"
+          boxSize={["8em", "12em"]}
+          mt={["30px", "50px"]}
+        />
       </Center>
+
       <Heading textAlign="center" color="white" mb="20px">
         Welcome to Grow Fin
       </Heading>
+
       <Heading as="h4" size="md" color="white" textAlign="center" mb="10px">
         "Your money Our expertise"
       </Heading>
+
       <Text textAlign="center" color="white" mb="8px">
         We understand that raising capital can be one of te most challenging
         aspects of launching or growing a business. <br /> that's why we're help
         entrepreneurs navigate the investment landscape with confidence and
         ease.
       </Text>
-      <Box
-        mt="3rem"
-        border="1px solid #00ff0a"
-        borderRadius="20px"
-        bg="#092312"
-        w="100%"
-        p={6}
-        color="white"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-      >
-        {/* <SimpleGrid ></SimpleGrid> */}
-        <Box>
-          <Heading as="h4" size="md" color="white" textAlign="center" m={5}>
-            What do people call you
-          </Heading>
-          <Input
-            type="text"
-            placeholder="Name"
-            bg="black"
-            border="1px solid #00ff0a"
-          />
-        </Box>
-        <Box>
-          <Heading as="h4" size="md" color="white" textAlign="center" m={5}>
-            What do people call you
-          </Heading>
-          <Input
-            type="email"
-            placeholder="xxxxxxxxxxxx@gamil.com"
-            bg="black"
-            border="1px solid #00ff0a"
-          />
-        </Box>
-        <Box>
-          <Heading as="h4" size="md" color="white" textAlign="center" m={5}>
-            What do people call you
-          </Heading>
-          <Select bg="black" border="1px solid #00ff0a">
-            <option value="entrepreneur">Entrepreneur</option>
-            <option value="investor">investor</option>
-          </Select>
-        </Box>
-        <Button
-          mt="60px"
-          bg="black"
+
+      <Center>
+        <Box
+          // mt="3rem"
+          mt={{ base: "3rem", md: "6rem" }}
           border="1px solid #00ff0a"
+          borderRadius="20px"
+          bg="#092312"
+          // w="100%"
+          w={{ base: "90%", md: "90%", lg: "95%", xl: "90%" }}
+          // p={6}
+          p={{ base: 3, md: 10 }}
           color="white"
-          colorScheme="#092312"
+          display="flex"
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
+          justifyContent="space-around"
+          // alignItems="center"
+          alignItems={{ base: "center", md: "center" }}
         >
-          Submit
-        </Button>
-      </Box>
+          {/* <SimpleGrid ></SimpleGrid> */}
+
+          <Box>
+            <Heading
+              as="h4"
+              size="md"
+              color="white"
+              textAlign={{ base: "center", md: "left" }}
+              m={5}
+            >
+              What do people call you
+            </Heading>
+            <Input
+              type="text"
+              placeholder="Name"
+              bg="black"
+              border="1px solid #00ff0a"
+            />
+          </Box>
+          <Box>
+            <Heading
+              as="h4"
+              size="md"
+              color="white"
+              textAlign={{ base: "center", md: "left" }}
+              m={5}
+            >
+              What do people call you
+            </Heading>
+            <Input
+              type="email"
+              placeholder="xxxxxxxxxxxx@gamil.com"
+              bg="black"
+              border="1px solid #00ff0a"
+            />
+          </Box>
+          <Box>
+            <Heading as="h4" size="md" color="white" textAlign="center" m={5}>
+              What do people call you
+            </Heading>
+            <Select bg="black" border="1px solid #00ff0a">
+              <option value="entrepreneur">Entrepreneur</option>
+              <option value="investor">investor</option>
+            </Select>
+          </Box>
+          <Button
+            // mt="60px"
+            mt={{ md: "2rem", lg: 0 }}
+            bg="black"
+            border="1px solid #00ff0a"
+            color="white"
+            colorScheme="#092312"
+          >
+            Submit
+          </Button>
+        </Box>
+      </Center>
+
       <Heading mt="4rem" textAlign="center" color="white">
         How To Invest Or Scale UP
       </Heading>
+
       <Box
         display="flex"
         justifyContent="space-around"
+        flexDirection={{ base: "column", md: "column", lg: "row" }}
         bgGradient="linear(to-t, black, brand.100, black)"
-        p="80px"
-        mt="60px"
+        // p="80px"
+        p={{ base: "20px", md: "80px" }}
+        // mt="60px"
+        mt={{ base: "40px", md: "60px" }}
         color="white"
         textAlign="center"
+        _hover={{ cursor: "pointer" }}
         // border="1px solid red"
       >
         <Box
           display="flex"
           flexDirection="column"
           alignItems="center"
-          // _hover={<ScaleFade initialScale={0.9} in={isOpen} />}
+          _hover={{ transform: "scale(1.1)" }}
+          transition="transform 0.3s ease-in-out"
         >
           <Image
-            m={4}
+            m={8}
             src="signup.png"
             border="1px solid #00ff0a"
-            boxSize="5em"
-            p={5}
+            // boxSize="5em"
+            boxSize={{ base: "3em", md: "6em" }}
+            p={{ base: "5px", md: "20px" }}
             borderRadius="50%"
-            bgGradient="radial( brand.100,black)"
+            bg="white"
+            _hover={{ bgGradient: "radial( brand.100,black)" }}
           />
 
           <Heading mb={3}>Sign up</Heading>
           <Text>Sign up for free and update your portfolio</Text>
         </Box>
         <Spacer />
-        <Box display="flex" flexDirection="column" alignItems="center">
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          _hover={{ transform: "scale(1.1)" }}
+          transition="transform 0.3s ease-in-out"
+        >
           <Image
-            m={4}
+            m={8}
             src="users.png"
             border="1px solid #00ff0a"
-            boxSize="5em"
-            p={5}
+            boxSize={{ base: "3em", md: "6em" }}
+            p={{ base: "5px", md: "20px" }}
             borderRadius="50%"
-            bgGradient="radial( brand.100,black)"
+            bg="white"
+            _hover={{ bgGradient: "radial( brand.100,black)" }}
           />
           <Heading mb={3}>Connect</Heading>
           <Text>
@@ -142,15 +198,22 @@ const HomePage = () => {
           </Text>
         </Box>
         <Spacer />
-        <Box display="flex" flexDirection="column" alignItems="center">
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          _hover={{ transform: "scale(1.1)" }}
+          transition="transform 0.3s ease-in-out"
+        >
           <Image
-            m={4}
+            m={8}
             src="conversation.png"
             border="1px solid #00ff0a"
-            boxSize="5em"
-            p={5}
+            boxSize={{ base: "3em", md: "6em" }}
+            p={{ base: "5px", md: "20px" }}
             borderRadius="50%"
-            bgGradient="radial( brand.100,black)"
+            bg="white"
+            _hover={{ bgGradient: "radial( brand.100,black)" }}
           />
           <Heading mb={3}>Interact</Heading>
           <Text>
@@ -159,31 +222,34 @@ const HomePage = () => {
         </Box>
       </Box>
 
-      <SimpleGrid
-        color="white"
-        columns={2}
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-      >
-        <Box>
-          <Heading mb={5}>Sign UP</Heading>
-          <Text pb={5}>
-            Grow Fin the brokerage platform which <br />
-            helps the users to connect with the Investors and Fund Raisers.
-          </Text>
-          <Button
-            border="1px solid #00ff0a"
-            borderRadius="30px"
-            color="white"
-            bg="brand.100"
-            _hover={{ bg: "brand.100" }}
-          >
-            Sign Up
-          </Button>
-        </Box>
-        <Image src="1.png" />
-      </SimpleGrid>
+      <Center>
+        <SimpleGrid
+          color="white"
+          columns={{ sm: 1, md: 2 }}
+          display="flex"
+          justifyContent="space-around"
+          alignItems="center"
+          gap={5}
+        >
+          <Box>
+            <Heading mb={5}>Sign UP</Heading>
+            <Text pb={5}>
+              Grow Fin the brokerage platform which <br />
+              helps the users to connect with the Investors and Fund Raisers.
+            </Text>
+            <Button
+              border="1px solid #00ff0a"
+              borderRadius="30px"
+              color="white"
+              bg="brand.100"
+              _hover={{ bg: "brand.100" }}
+            >
+              Sign Up
+            </Button>
+          </Box>
+          <Image src="1.png" boxSize={{ base: "100%", md: "auto" }} />
+        </SimpleGrid>
+      </Center>
 
       <SimpleGrid
         color="white"
@@ -251,7 +317,7 @@ const HomePage = () => {
 
       <SimpleGrid
         bg="black"
-        columns={2}
+        columns={{ base: 1, sm: 1, md: 2 }}
         p={12}
         mb="50px"
         spacing={5}
@@ -288,8 +354,9 @@ const HomePage = () => {
       <Heading textAlign="center" color="white">
         Why Us
       </Heading>
+
       <SimpleGrid
-        columns={3}
+        columns={{ base: 1, sm: 1, md: 3 }}
         // border="1px solid red"
         p="40px"
         mt={10}
@@ -316,9 +383,80 @@ const HomePage = () => {
           </Text>
         </Box>
       </SimpleGrid>
+
       <Heading textAlign="center" color="white">
         Testimonials
       </Heading>
+      <CenterMode />
+      {/* <Center bgGradient="linear(to-t, black, brand.100, black)">
+        <Box mt="50px" mb="50px" w="90%" color="white" textAlign="center">
+          <Slider {...settings}>
+            <Box
+              borderRadius="20px"
+              p="40px"
+              border="1px solid #00ff0a"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              <Image
+                src="one.jpg"
+                border="1px solid #00ff0a"
+                borderRadius="5px"
+                boxSize="100px"
+              />
+              <Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusamus quibusdam cupiditate aliquam iste amet, sint totam
+                recusandae asperiores, esse, modi a praesentium labore? Illum,
+                maiores! Odio, dolor quis. Distinctio, totam.
+              </Text>
+            </Box>
+
+            <Box>
+              <Image
+                src="two.jpg"
+                border="1px solid #00ff0a"
+                borderRadius="5px"
+                boxSize="200px"
+              />
+            </Box>
+            <Box>
+              <Image
+                src="three.jpg"
+                border="1px solid #00ff0a"
+                borderRadius="5px"
+                boxSize="200px"
+              />
+            </Box>
+            <Box>
+              <Image
+                src="four.jpg"
+                border="1px solid #00ff0a"
+                borderRadius="5px"
+                boxSize="200px"
+              />
+            </Box>
+            <Box>
+              <Image
+                src="five.jpg"
+                border="1px solid #00ff0a"
+                borderRadius="5px"
+                boxSize="200px"
+              />
+            </Box>
+            <Box>
+              <Image
+                src="six.jpg"
+                border="1px solid #00ff0a"
+                borderRadius="5px"
+                boxSize="200px"
+              />
+            </Box>
+          </Slider>
+        </Box>
+      </Center> */}
+
       <Heading textAlign="center" color="white">
         Trusted By Millions
       </Heading>
@@ -326,10 +464,9 @@ const HomePage = () => {
       <Box
         borderTop="1px solid #00ff0a"
         borderBottom="1px solid #00ff0a"
-        // textAlign="center"
         display="flex"
         justifyContent="space-around"
-        alignItems="center"
+        flexDirection={{ base: "column", md: "row" }}
         mt="70px"
         mb="70px"
         p="20px"
@@ -343,6 +480,7 @@ const HomePage = () => {
             p={5}
             borderRadius="50%"
             bgGradient="radial( brand.100,black)"
+            m={2}
           />
           <Text>Easy Connections</Text>
         </Box>
@@ -352,6 +490,7 @@ const HomePage = () => {
             border="1px solid #00ff0a"
             boxSize="5em"
             p={5}
+            m={2}
             borderRadius="50%"
             bgGradient="radial( brand.100,black)"
           />
@@ -363,6 +502,7 @@ const HomePage = () => {
             border="1px solid #00ff0a"
             boxSize="5em"
             p={5}
+            m={2}
             borderRadius="50%"
             bgGradient="radial( brand.100,black)"
           />
@@ -372,7 +512,7 @@ const HomePage = () => {
 
       {/* <Divider orientation="horizontal" color="#00ff0a" /> */}
       <Box color="white" textAlign="center" mb="100px">
-        <SimpleGrid columns={3}>
+        <SimpleGrid columns={{ base: 1, sm: 1, md: 3 }}>
           <Box>
             <Heading mb={8}>Company</Heading>
             <RouterLink>About Us</RouterLink>
@@ -417,22 +557,14 @@ const HomePage = () => {
         </SimpleGrid>
       </Box>
 
-      <Box
-      // w="30rem"
-      // textAlign="center"
-      // display="flex"
-      // justifyContent="space-around"
-      // alignItems="center"
-      // flexDirection="column"
-      // color="white"
-      // border="1x solid red"
-      >
+      <Box>
         {/* <AbsoluteCenter> */}
         <Heading textAlign="center" color="white" mb={10}>
           Stay In Touch!
         </Heading>
+
         <Center>
-          <InputGroup size="md" w="33%" mb="30px">
+          <InputGroup size="md" w={{ base: "90%", md: "33%" }} mb="30px">
             <Input
               pr="10px"
               type="email"

@@ -1,4 +1,6 @@
 import React from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -6,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { extendTheme } from "@chakra-ui/react";
+import AuthContextProvider from "./Context/AuthContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const theme = extendTheme({
@@ -18,13 +21,15 @@ const theme = extendTheme({
   },
 });
 root.render(
-  <BrowserRouter>
-    <ChakraProvider theme={theme}>
-      <React.StrictMode>
+  <AuthContextProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
-    </ChakraProvider>
-  </BrowserRouter>
+        {/* </React.StrictMode> */}
+      </ChakraProvider>
+    </BrowserRouter>
+  </AuthContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
