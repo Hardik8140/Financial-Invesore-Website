@@ -9,6 +9,7 @@ import Login from "../Page/Login";
 import SignUp from "../Page/signup";
 import PrivateRoute from "./privateRouter";
 import IeData from "../Page/ieData";
+import Admin from "../Page/admin";
 
 const AllRoutes = () => {
   return (
@@ -28,6 +29,7 @@ const AllRoutes = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Box>
   );

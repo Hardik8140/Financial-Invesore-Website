@@ -94,6 +94,7 @@ const IeData = () => {
           </Tbody>
         </Table>
       </TableContainer>
+
       <Box>
         <SimpleGrid columns={3} mb="80px">
           <Box>
