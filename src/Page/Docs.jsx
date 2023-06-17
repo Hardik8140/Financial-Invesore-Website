@@ -20,36 +20,49 @@ import { Link as RouterLink } from "react-router-dom";
 const Docs = () => {
   return (
     <Box bgGradient="linear(to-b,black, brand.100)">
-      <Box
-        pt={10}
-        pb="100px"
-        w="90%"
-        display="flex"
-        justifyContent="center"
-        textAlign="center"
-        alignItems="center"
-      >
-        {/* <SimpleGrid columns={2}> */}
-        <Box p="100px" color="white">
-          <Heading>'Your Money Our Expertise'</Heading>
-          <Text>
-            Maximize your financial potential with our expert guidance. Let us
-            handle your money matters and unlock opportunities for growth and
-            success.
-          </Text>
-        </Box>
-        <Image
-          src="Businessman_checks_his_income_has_gone_up_generated.png"
-          boxSize="400px"
-        />
-        {/* </SimpleGrid> */}
-      </Box>
+      <Center>
+        <Box
+          pt={[2, 5, 10]}
+          pb={[8, 16, 20, "100px"]}
+          w={["100%", "90%"]}
+          display="flex"
+          justifyContent="center"
+          textAlign="center"
+          alignItems="center"
+          flexDirection={["column", "column", "row"]}
+        >
+          {/* <SimpleGrid columns={2}> */}
 
-      <Heading textAlign="center" color="white" mb="50px">
+          <Box p={[4, 8, 12]} color="white">
+            <Heading fontSize={["xl", "2xl", "3xl"]}>
+              'Your Money Our Expertise'
+            </Heading>
+            <Text fontSize={["sm", "md", "lg"]}>
+              Maximize your financial potential with our expert guidance. Let us
+              handle your money matters and unlock opportunities for growth and
+              success.
+            </Text>
+          </Box>
+          <Image
+            src="Businessman_checks_his_income_has_gone_up_generated.png"
+            boxSize={["250px", "300px", "400px"]}
+            mt={[4, 8, 0]}
+          />
+          {/* </SimpleGrid> */}
+        </Box>
+      </Center>
+
+      <Heading textAlign="center" color="white" mb={["30px", "50px"]}>
         Our Upgraded Plans
       </Heading>
+
       <Center>
-        <SimpleGrid w="90%" columns={3} spacing="40px" pb="60px">
+        <SimpleGrid
+          w={["100%", "90%"]}
+          columns={{ base: 1, sm: 1, md: 3, lg: 3 }}
+          spacing={["20px", "40px"]}
+          pb={["40px", "60px"]}
+        >
           <Card maxW="sm" p={3} borderRadius="20px" bg="black" color="white">
             <CardBody textAlign="center">
               <Heading>Pro</Heading>
@@ -185,7 +198,11 @@ const Docs = () => {
         borderBottom="1px solid #00ff0a"
         p={6}
       >
-        <SimpleGrid columns={3} display="flex" justifyContent="space-around">
+        <SimpleGrid
+          columns={{ base: 1, sm: 1, md: 3 }}
+          display="flex"
+          justifyContent="space-around"
+        >
           <Box display="flex" flexDirection="column" alignItems="center">
             <Image
               src="access-control.png"
@@ -245,7 +262,7 @@ const Docs = () => {
         </Text>
       </Box>
       <Box color="white" textAlign="center" mb={10}>
-        <SimpleGrid columns={3} pb="80px">
+        <SimpleGrid columns={{ base: 1, sm: 1, md: 3 }} pb="80px">
           <Box>
             <Heading mb={8}>Company</Heading>
             <RouterLink>About Us</RouterLink>

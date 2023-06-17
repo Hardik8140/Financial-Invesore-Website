@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useState, useContext } from "react";
-import { Navigate, Link as RouterLink } from "react-router-dom";
+import { Navigate, Link as RouterLink, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContextProvider";
@@ -22,6 +22,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +36,12 @@ const Login = () => {
         (user) => user.email === email && user.password === password
       );
       if (user) {
-        loginUsers();
+        if (user.email === "admin@gmail.com" && user.password === "admin") {
+          // loginUsers();
+          navigate("/admin");
+        } else {
+          loginUsers();
+        }
       } else {
         setError("Invalid Email and Password.");
       }

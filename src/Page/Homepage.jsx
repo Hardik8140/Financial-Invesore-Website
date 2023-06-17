@@ -17,10 +17,11 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, Link as RouterLink } from "react-router-dom";
 import Slider from "react-slick";
 import CenterMode from "../Components/carousel";
+import axios from "axios";
 
 const HomePage = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -31,6 +32,29 @@ const HomePage = () => {
     centerPadding: "60px",
     slidesToShow: 3,
     speed: 1000,
+  };
+  // const history = useHistory();
+
+  // const handleClick = () => {
+  //   history.push("/signup");
+  // };
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [category, setCategory] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let useData = { name, email, category };
+
+    try {
+      let res = await axios.post(
+        `https://growfin.onrender.com/growUser`,
+        useData
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -93,6 +117,7 @@ const HomePage = () => {
               placeholder="Name"
               bg="black"
               border="1px solid #00ff0a"
+              onChange={(e) => setName(e.target.value)}
             />
           </Box>
           <Box>
@@ -103,25 +128,31 @@ const HomePage = () => {
               textAlign={{ base: "center", md: "left" }}
               m={5}
             >
-              What do people call you
+              Mail id
             </Heading>
             <Input
               type="email"
               placeholder="xxxxxxxxxxxx@gamil.com"
               bg="black"
               border="1px solid #00ff0a"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Box>
           <Box>
             <Heading as="h4" size="md" color="white" textAlign="center" m={5}>
-              What do people call you
+              Who might you be?
             </Heading>
-            <Select bg="black" border="1px solid #00ff0a">
+            <Select
+              bg="black"
+              border="1px solid #00ff0a"
+              onChange={(e) => setCategory(e.target.value)}
+            >
               <option value="entrepreneur">Entrepreneur</option>
               <option value="investor">investor</option>
             </Select>
           </Box>
           <Button
+            onClick={handleSubmit}
             // mt="60px"
             mt={{ md: "2rem", lg: 0 }}
             bg="black"
@@ -158,6 +189,7 @@ const HomePage = () => {
           alignItems="center"
           _hover={{ transform: "scale(1.1)" }}
           transition="transform 0.3s ease-in-out"
+          onClick={() => (window.location.href = "/signup")}
         >
           <Image
             m={8}
@@ -230,8 +262,12 @@ const HomePage = () => {
           justifyContent="space-around"
           alignItems="center"
           gap={5}
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
         >
-          <Box>
+          <Box
+            maxWidth={{ base: "100%", md: "initial" }}
+            textAlign={{ base: "center", md: "initial" }}
+          >
             <Heading mb={5}>Sign UP</Heading>
             <Text pb={5}>
               Grow Fin the brokerage platform which <br />
@@ -243,6 +279,7 @@ const HomePage = () => {
               color="white"
               bg="brand.100"
               _hover={{ bg: "brand.100" }}
+              onClick={() => (window.location.href = "/signup")}
             >
               Sign Up
             </Button>
@@ -251,63 +288,81 @@ const HomePage = () => {
         </SimpleGrid>
       </Center>
 
-      <SimpleGrid
-        color="white"
-        columns={2}
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-      >
-        <Image src="2.png" />
-        <Box>
-          <Heading mb={5}>How to Raise Funds</Heading>
-          <Text pb={5}>
-            Sign In to the Grow Fin and describe your <br />
-            Domain or specific Niche in your profile <br />
-            to get the investors attention.
-          </Text>
-          <Button
-            border="1px solid #00ff0a"
-            borderRadius="30px"
-            color="white"
-            bg="brand.100"
-            _hover={{ bg: "brand.100" }}
+      <Center>
+        <SimpleGrid
+          color="white"
+          columns={{ sm: 1, md: 2 }}
+          display="flex"
+          justifyContent="space-around"
+          alignItems="center"
+          gap={5}
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
+        >
+          <Image
+            src="2.png"
+            boxSize={{ base: "100%", md: "auto" }}
+            mr={{ lg: "140px" }}
+          />
+          <Box
+            maxWidth={{ base: "100%", md: "initial" }}
+            textAlign={{ base: "center", md: "initial" }}
           >
-            Scale Up
-          </Button>
-        </Box>
-      </SimpleGrid>
+            <Heading mb={5}>How to Raise Funds</Heading>
+            <Text pb={5}>
+              Sign In to the Grow Fin and describe your <br />
+              Domain or specific Niche in your profile <br />
+              to get the investors attention.
+            </Text>
+            <Button
+              border="1px solid #00ff0a"
+              borderRadius="30px"
+              color="white"
+              bg="brand.100"
+              _hover={{ bg: "brand.100" }}
+            >
+              Scale Up
+            </Button>
+          </Box>
+        </SimpleGrid>
+      </Center>
 
-      <SimpleGrid
-        color="white"
-        columns={2}
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-      >
-        <Box>
-          <Heading mb={5}>How to Invest</Heading>
-          <Text pb={5}>
-            Sing Up to the Grow Fin and update your <br />
-            profile to demonstrate how much would <br />
-            you like to Invest for the Interested Specific <br />
-            Business
-          </Text>
-          <Button
-            border="1px solid #00ff0a"
-            borderRadius="30px"
-            color="white"
-            bg="brand.100"
-            _hover={{ bg: "brand.100" }}
+      <Center>
+        <SimpleGrid
+          color="white"
+          columns={{ sm: 1, md: 2 }}
+          display="flex"
+          justifyContent="space-around"
+          alignItems="center"
+          gap={5}
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
+        >
+          <Box
+            maxWidth={{ base: "100%", md: "initial" }}
+            textAlign={{ base: "center", md: "initial" }}
           >
-            Sign Up
-          </Button>
-        </Box>
-        <Image src="3.png" />
-      </SimpleGrid>
+            <Heading mb={5}>How to Invest</Heading>
+            <Text pb={5}>
+              Sing Up to the Grow Fin and update your <br />
+              profile to demonstrate how much would <br />
+              you like to Invest for the Interested Specific <br />
+              Business
+            </Text>
+            <Button
+              border="1px solid #00ff0a"
+              borderRadius="30px"
+              color="white"
+              bg="brand.100"
+              _hover={{ bg: "brand.100" }}
+            >
+              Invest
+            </Button>
+          </Box>
+          <Image src="3.png" boxSize={{ base: "100%", md: "auto" }} />
+        </SimpleGrid>
+      </Center>
 
       <Box color="white" textAlign="center" mt="80px" mb="50px">
-        <Heading>The Service Which We Provide</Heading>
+        <Heading mb="40px">The Service Which We Provide</Heading>
         <Text>
           our solution for connecting to a global network of participants with
           which your customers can instantly send <br />
