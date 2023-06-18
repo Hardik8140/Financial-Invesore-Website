@@ -1,16 +1,16 @@
 import {
-  AbsoluteCenter,
   Box,
   Button,
   Center,
   Container,
   Divider,
+  FormControl,
+  FormLabel,
   Heading,
   Image,
   Input,
   InputGroup,
   InputRightElement,
-  ScaleFade,
   Select,
   SimpleGrid,
   Spacer,
@@ -18,7 +18,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Navigate, Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import Slider from "react-slick";
 import CenterMode from "../Components/carousel";
 import axios from "axios";
@@ -85,7 +85,7 @@ const HomePage = () => {
       <Center>
         <Box
           // mt="3rem"
-          mt={{ base: "3rem", md: "6rem" }}
+          mt={{ base: "3rem", md: "2rem" }}
           border="1px solid #00ff0a"
           borderRadius="20px"
           bg="#092312"
@@ -101,9 +101,64 @@ const HomePage = () => {
           alignItems={{ base: "center", md: "center" }}
         >
           {/* <SimpleGrid ></SimpleGrid> */}
-
-          <Box>
-            <Heading
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <Center>
+              <SimpleGrid
+                columns={{ base: 1, sm: 1, md: 1, lg: 4 }}
+                spacing={10}
+              >
+                <FormControl mb={{ base: 4, md: 0 }} p={4} isRequired>
+                  <FormLabel>What do people call you</FormLabel>
+                  <Input
+                    type="text"
+                    placeholder="Name"
+                    bg="black"
+                    border="1px solid #00ff0a"
+                    onChange={(e) => setName(e.target.value)}
+                    w="100%"
+                  />
+                </FormControl>
+                <FormControl mb={{ base: 4, md: 0 }} p={4} isRequired>
+                  <FormLabel>Email address</FormLabel>
+                  <Input
+                    type="email"
+                    placeholder="xxxxxxxxxxxx@gamil.com"
+                    bg="black"
+                    border="1px solid #00ff0a"
+                    onChange={(e) => setName(e.target.value)}
+                    w="100%"
+                  />
+                </FormControl>
+                <FormControl mb={{ base: 4, md: 0 }} p={4} isRequired>
+                  <FormLabel>Who might you be?</FormLabel>
+                  <Select
+                    bg="black"
+                    border="1px solid #00ff0a"
+                    onChange={(e) => setCategory(e.target.value)}
+                    w="100%"
+                  >
+                    <option value="entrepreneur">Entrepreneur</option>
+                    <option value="investor">Investor</option>
+                  </Select>
+                </FormControl>
+                <FormControl p={4}>
+                  <Button
+                    type="submit"
+                    bg="black"
+                    border="1px solid #00ff0a"
+                    color="white"
+                    _hover={{ bg: "#00ff0a" }}
+                    w="100%"
+                  >
+                    Submit
+                  </Button>
+                </FormControl>
+              </SimpleGrid>
+            </Center>
+          </form>
+        </Box>
+      </Center>
+      {/* <Heading
               as="h4"
               size="md"
               color="white"
@@ -118,8 +173,8 @@ const HomePage = () => {
               bg="black"
               border="1px solid #00ff0a"
               onChange={(e) => setName(e.target.value)}
-            />
-          </Box>
+            /> */}
+      {/* </Box>
           <Box>
             <Heading
               as="h4"
@@ -139,7 +194,13 @@ const HomePage = () => {
             />
           </Box>
           <Box>
-            <Heading as="h4" size="md" color="white" textAlign="center" m={5}>
+            <Heading
+              as="h4"
+              size="md"
+              color="white"
+              textAlign={{ base: "center", md: "left" }}
+              m={5}
+            >
               Who might you be?
             </Heading>
             <Select
@@ -161,9 +222,8 @@ const HomePage = () => {
             colorScheme="#092312"
           >
             Submit
-          </Button>
-        </Box>
-      </Center>
+          </Button> */}
+      {/* </Center> */}
 
       <Heading mt="4rem" textAlign="center" color="white">
         How To Invest Or Scale UP
@@ -225,9 +285,7 @@ const HomePage = () => {
             _hover={{ bgGradient: "radial( brand.100,black)" }}
           />
           <Heading mb={3}>Connect</Heading>
-          <Text>
-            Select and connect with entrepreneurs <br /> or investors{" "}
-          </Text>
+          <Text>Select and connect with entrepreneurs or investors </Text>
         </Box>
         <Spacer />
         <Box
@@ -248,14 +306,13 @@ const HomePage = () => {
             _hover={{ bgGradient: "radial( brand.100,black)" }}
           />
           <Heading mb={3}>Interact</Heading>
-          <Text>
-            Become a premium member and start <br /> a conversion
-          </Text>
+          <Text>Become a premium member and start a conversion</Text>
         </Box>
       </Box>
 
       <Center>
         <SimpleGrid
+          w="90%"
           color="white"
           columns={{ sm: 1, md: 2 }}
           display="flex"
@@ -270,8 +327,8 @@ const HomePage = () => {
           >
             <Heading mb={5}>Sign UP</Heading>
             <Text pb={5}>
-              Grow Fin the brokerage platform which <br />
-              helps the users to connect with the Investors and Fund Raisers.
+              Grow Fin the brokerage platform which helps the users to connect
+              with the Investors and Fund Raisers.
             </Text>
             <Button
               border="1px solid #00ff0a"
@@ -290,6 +347,7 @@ const HomePage = () => {
 
       <Center>
         <SimpleGrid
+          w="90%"
           color="white"
           columns={{ sm: 1, md: 2 }}
           display="flex"
@@ -301,7 +359,7 @@ const HomePage = () => {
           <Image
             src="2.png"
             boxSize={{ base: "100%", md: "auto" }}
-            mr={{ lg: "140px" }}
+            mr={{ lg: "160px" }}
           />
           <Box
             maxWidth={{ base: "100%", md: "initial" }}
@@ -309,9 +367,8 @@ const HomePage = () => {
           >
             <Heading mb={5}>How to Raise Funds</Heading>
             <Text pb={5}>
-              Sign In to the Grow Fin and describe your <br />
-              Domain or specific Niche in your profile <br />
-              to get the investors attention.
+              Sign In to the Grow Fin and describe your Domain or specific Niche
+              in your profile to get the investors attention.
             </Text>
             <Button
               border="1px solid #00ff0a"
@@ -328,6 +385,7 @@ const HomePage = () => {
 
       <Center>
         <SimpleGrid
+          w="90%"
           color="white"
           columns={{ sm: 1, md: 2 }}
           display="flex"
@@ -342,10 +400,8 @@ const HomePage = () => {
           >
             <Heading mb={5}>How to Invest</Heading>
             <Text pb={5}>
-              Sing Up to the Grow Fin and update your <br />
-              profile to demonstrate how much would <br />
-              you like to Invest for the Interested Specific <br />
-              Business
+              Sing Up to the Grow Fin and update your profile to demonstrate how
+              much would you like to Invest for the Interested Specific Business
             </Text>
             <Button
               border="1px solid #00ff0a"
@@ -357,7 +413,11 @@ const HomePage = () => {
               Invest
             </Button>
           </Box>
-          <Image src="3.png" boxSize={{ base: "100%", md: "auto" }} />
+          <Image
+            src="3.png"
+            boxSize={{ base: "100%", md: "auto" }}
+            ml={{ lg: "100px" }}
+          />
         </SimpleGrid>
       </Center>
 
@@ -439,7 +499,7 @@ const HomePage = () => {
         </Box>
       </SimpleGrid>
 
-      <Heading textAlign="center" color="white">
+      <Heading textAlign="center" color="white" mt="50px" mb="50px">
         Testimonials
       </Heading>
       <CenterMode />
@@ -537,7 +597,7 @@ const HomePage = () => {
             bgGradient="radial( brand.100,black)"
             m={2}
           />
-          <Text>Easy Connections</Text>
+          <Text fontSize="30px">Easy Connections</Text>
         </Box>
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Image

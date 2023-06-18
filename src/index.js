@@ -19,6 +19,10 @@ const theme = extendTheme({
       900: "#1a202c",
     },
   },
+  fonts: {
+    heading: "Roboto",
+    body: "Roboto",
+  },
 });
 root.render(
   <AuthContextProvider>

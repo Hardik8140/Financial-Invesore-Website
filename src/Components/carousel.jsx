@@ -1,75 +1,115 @@
-import { Box, Center, Image, Text } from "@chakra-ui/react";
+import { AspectRatio, Box, Center, Image, Text } from "@chakra-ui/react";
 import React, { Component } from "react";
 import Slider from "react-slick";
+import style from "../Routes/Style.module.css";
 
-export default class CenterMode extends Component {
+export default class Responsive extends Component {
   render() {
-    const settings = {
-      className: "center",
-      centerMode: true,
+    var settings = {
+      // dots: true,
       infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
       speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      centerPadding: "50px",
+      focusOnSelect: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     };
     return (
-      <Center bgGradient="linear(to-t, black, brand.100, black)">
-        <Box mt="50px" mb="50px" w="90%" color="white" textAlign="center">
+      <Center>
+        <Box w="90%" mb="80px" color="white">
           <Slider {...settings}>
-            <Box borderRadius="20px" p="40px" border="1px solid #00ff0a">
-              <Image
-                src="one.jpg"
-                border="1px solid #00ff0a"
-                borderRadius="5px"
-                boxSize="100px"
-              />
+            <Box p={5}>
+              <AspectRatio ratio={5 / 3}>
+                <Image src="one.jpg" pb="20px" />
+              </AspectRatio>
               <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus quibusdam cupiditate aliquam iste amet, sint totam
-                recusandae asperiores, esse, modi a praesentium labore? Illum,
-                maiores! Odio, dolor quis. Distinctio, totam.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+                quibusdam tempore odit quam placeat similique alias quae quos
+                asperiores pariatur perferendis, beatae dolorum et eos aperiam
+                doloribus autem illo hic?
               </Text>
             </Box>
-
-            <Box>
-              <Image
-                src="two.jpg"
-                border="1px solid #00ff0a"
-                borderRadius="5px"
-                boxSize="200px"
-              />
+            <Box p={5}>
+              <AspectRatio ratio={5 / 3}>
+                <Image src="two.jpg" pb="20px" />
+              </AspectRatio>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+                quibusdam tempore odit quam placeat similique alias quae quos
+                asperiores pariatur perferendis, beatae dolorum et eos aperiam
+                doloribus autem illo hic?
+              </Text>
             </Box>
-            <Box>
-              <Image
-                src="three.jpg"
-                border="1px solid #00ff0a"
-                borderRadius="5px"
-                boxSize="200px"
-              />
+            <Box p={5}>
+              <AspectRatio ratio={5 / 3}>
+                <Image src="three.jpg" pb="20px" />
+              </AspectRatio>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+                quibusdam tempore odit quam placeat similique alias quae quos
+                asperiores pariatur perferendis, beatae dolorum et eos aperiam
+                doloribus autem illo hic?
+              </Text>
             </Box>
-            <Box>
-              <Image
-                src="four.jpg"
-                border="1px solid #00ff0a"
-                borderRadius="5px"
-                boxSize="200px"
-              />
+            <Box p={5}>
+              <AspectRatio ratio={5 / 3}>
+                <Image src="four.jpg" pb="20px" />
+              </AspectRatio>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+                quibusdam tempore odit quam placeat similique alias quae quos
+                asperiores pariatur perferendis, beatae dolorum et eos aperiam
+                doloribus autem illo hic?
+              </Text>
             </Box>
-            <Box>
-              <Image
-                src="five.jpg"
-                border="1px solid #00ff0a"
-                borderRadius="5px"
-                boxSize="200px"
-              />
+            <Box p={5}>
+              <AspectRatio ratio={5 / 3}>
+                <Image src="five.jpg" pb="20px" />
+              </AspectRatio>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+                quibusdam tempore odit quam placeat similique alias quae quos
+                asperiores pariatur perferendis, beatae dolorum et eos aperiam
+                doloribus autem illo hic?
+              </Text>
             </Box>
-            <Box>
-              <Image
-                src="six.jpg"
-                border="1px solid #00ff0a"
-                borderRadius="5px"
-                boxSize="200px"
-              />
+            <Box p={5}>
+              <AspectRatio ratio={5 / 3}>
+                <Image src="six.jpg" pb="20px" />
+              </AspectRatio>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+                quibusdam tempore odit quam placeat similique alias quae quos
+                asperiores pariatur perferendis, beatae dolorum et eos aperiam
+                doloribus autem illo hic?
+              </Text>
             </Box>
           </Slider>
         </Box>
