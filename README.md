@@ -2,7 +2,9 @@
 
 Construct Individual Project
 
-# GrowFin.com
+# [GrowFin.com](https://waiting-knife-3384-teal.vercel.app/)
+
+![Screenshot 2023-06-18 163852](https://github.com/Hardik8140/waiting-knife-3384/assets/123854368/c3ab19d0-3549-47ac-b636-b441b96bf270)
 
 ## Project Description
 **GrowFin is a finance website for the Investor and the Entrepreneur. The Grow Fin helps both to find the investor for the Entrepreneur and if any Entrepreneur wants to coach from the investor to arrange by the GrowFin. The GrowFin provides 24x7 support.**
@@ -30,4 +32,4 @@ Construct Individual Project
 * Create/Update/Delete Product (Admin)
 
 ## Deployed Link
-(https://645a1f8e973a1e008547f80f--adorable-figolla-16a1d3.netlify.app/)
+(https://waiting-knife-3384-teal.vercel.app/)
