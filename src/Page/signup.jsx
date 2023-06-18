@@ -35,7 +35,7 @@ const SignUp = () => {
     <Box>
       <Center p="70px" bg="black" pb="80px">
         <form onSubmit={handleSubmit}>
-          <FormControl>
+          <FormControl isRequired>
             <Heading color="white" textDecoration="underline" mb={3}>
               Create Your Account..
             </Heading>
@@ -44,7 +44,7 @@ const SignUp = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              w="400px"
+              w={["100%", "400px"]}
               border="1px solid #00ff0a"
               color="white"
               _hover={{ border: "1px solid #00ff0a", bg: "brand.100" }}
@@ -55,7 +55,7 @@ const SignUp = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              w="400px"
+              w={["100%", "400px"]}
               border="1px solid #00ff0a"
               color="white"
               _hover={{ border: "1px solid #00ff0a", bg: "brand.100" }}
@@ -66,7 +66,7 @@ const SignUp = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              w="400px"
+              w={["100%", "400px"]}
               border="1px solid #00ff0a"
               color="white"
               _hover={{
@@ -81,7 +81,7 @@ const SignUp = () => {
               type="number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              w="400px"
+              w={["100%", "400px"]}
               border="1px solid #00ff0a"
               color="white"
               _hover={{
@@ -95,7 +95,7 @@ const SignUp = () => {
           <Input
             type="submit"
             placeholder="Sign Up"
-            w="400px"
+            w={["100%", "400px"]}
             border="1px solid #00ff0a"
             color="white"
             mt={5}
@@ -116,7 +116,7 @@ const SignUp = () => {
         mb={10}
         bgGradient="linear(to-t, brand.100, black)"
       >
-        <SimpleGrid columns={3} mb="80px">
+        <SimpleGrid columns={{ base: 1, sm: 1, md: 3 }} mb="80px">
           <Box>
             <Heading mb={8}>Company</Heading>
             <RouterLink>About Us</RouterLink>

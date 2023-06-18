@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Center,
   Divider,
   FormControl,
@@ -7,8 +8,16 @@ import {
   Heading,
   Image,
   Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   SimpleGrid,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useContext } from "react";
 import { Navigate, Link as RouterLink, useNavigate } from "react-router-dom";
@@ -23,6 +32,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,6 +54,7 @@ const Login = () => {
         }
       } else {
         setError("Invalid Email and Password.");
+        onOpen();
       }
     } catch (error) {
       setIsLoading(false);
@@ -69,7 +80,7 @@ const Login = () => {
                 value={email}
                 name="email"
                 type="email"
-                w="400px"
+                w={["100%", "400px"]}
                 border="1px solid #00ff0a"
                 color="white"
                 _hover={{ border: "1px solid #00ff0a", bg: "brand.100" }}
@@ -85,7 +96,7 @@ const Login = () => {
                 value={password}
                 name="password"
                 type="password"
-                w="400px"
+                w={["100%", "400px"]}
                 border="1px solid #00ff0a"
                 color="white"
                 _hover={{
@@ -99,7 +110,7 @@ const Login = () => {
               <Input
                 color="white"
                 border="1px solid #00ff0a"
-                w="400px"
+                w={["100%", "400px"]}
                 type="submit"
                 variant="solid"
                 bg="black"
@@ -120,10 +131,9 @@ const Login = () => {
       <Box
         color="white"
         textAlign="center"
-        mb={10}
         bgGradient="linear(to-t, brand.100, black)"
       >
-        <SimpleGrid columns={3} pb="80px">
+        <SimpleGrid columns={{ base: 1, sm: 1, md: 3 }}>
           <Box>
             <Heading mb={8}>Company</Heading>
             <RouterLink>About Us</RouterLink>
@@ -195,6 +205,21 @@ const Login = () => {
           <Text>Privacy Policy | Support</Text>
         </Box>
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Error</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>{error}</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };

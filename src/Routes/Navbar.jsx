@@ -39,7 +39,7 @@ const Navbar = () => {
       justifyContent="space-between"
       alignItems="center"
       bgGradient="linear(to-t, black, brand.100)"
-      textAlign="center"
+      // textAlign="center"
       p={6}
     >
       <RouterLink to="/">
@@ -49,13 +49,15 @@ const Navbar = () => {
       <Box
         // border="1px solid red"
         display="flex"
-        w="40%"
+        // w="40%"
         justifyContent="space-evenly"
+        // textAlign="center"
       >
         <Box
           display={{ base: "none", md: "flex" }}
-          width="90%"
-          textAlign="center"
+          width="100%"
+          mr="40px"
+          // textAlign="center"
         >
           {links.map((link) => (
             <RouterLink key={link.path} to={link.path} className={style.btn}>
@@ -66,11 +68,10 @@ const Navbar = () => {
 
         <Box>
           <HamburgerIcon
-            color="yellow"
+            color="white"
             ref={btnRef}
-            // colorScheme="yellow"
             onClick={onOpen}
-            _hover={{ cursor: "pointer" }}
+            _hover={{ cursor: "pointer", color: "yellow" }}
           />
           <Drawer
             isOpen={isOpen}

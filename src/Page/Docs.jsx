@@ -58,7 +58,7 @@ const Docs = () => {
 
       <Center>
         <SimpleGrid
-          w={["100%", "90%"]}
+          w={["90%", "90%"]}
           columns={{ base: 1, sm: 1, md: 3, lg: 3 }}
           spacing={["20px", "40px"]}
           pb={["40px", "60px"]}
@@ -192,54 +192,73 @@ const Docs = () => {
         Our Mission
       </Heading>
       <Box
-        mt="40px"
-        color="white"
         borderTop="1px solid #00ff0a"
         borderBottom="1px solid #00ff0a"
-        p={6}
+        display="flex"
+        justifyContent="space-around"
+        flexDirection={{ base: "column", md: "row" }}
+        mt="70px"
+        mb={{ base: "40px", md: "70px" }}
+        p="20px"
+        color="white"
       >
-        <SimpleGrid
+        {/* <SimpleGrid
           columns={{ base: 1, sm: 1, md: 3 }}
           display="flex"
           justifyContent="space-around"
+        > */}
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          flexDirection="column"
+          alignItems="center"
         >
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Image
-              src="access-control.png"
-              boxSize="80px"
-              border="1px solid #00ff0a"
-              p="20px"
-              borderRadius="50%"
-              bgGradient="radial( brand.100,black)"
-              m="20px"
-            />
-            <Text fontSize="30px">Accessibility</Text>
-          </Box>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Image
-              m="20px"
-              src="transparency.png"
-              boxSize="80px"
-              border="1px solid #00ff0a"
-              p="20px"
-              borderRadius="50%"
-              bgGradient="radial( brand.100,black)"
-            />
-            <Text fontSize="30px">Transparency</Text>
-          </Box>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Image
-              src="money.png"
-              boxSize="80px"
-              border="1px solid #00ff0a"
-              p="20px"
-              borderRadius="50%"
-              bgGradient="radial( brand.100,black)"
-              m="20px"
-            />
-            <Text fontSize="30px">Affordability</Text>
-          </Box>
-        </SimpleGrid>
+          <Image
+            src="access-control.png"
+            boxSize="80px"
+            border="1px solid #00ff0a"
+            p="20px"
+            borderRadius="50%"
+            bgGradient="radial( brand.100,black)"
+            m="20px"
+          />
+          <Text fontSize="30px">Accessibility</Text>
+        </Box>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Image
+            m="20px"
+            src="transparency.png"
+            boxSize="80px"
+            border="1px solid #00ff0a"
+            p="20px"
+            borderRadius="50%"
+            bgGradient="radial( brand.100,black)"
+          />
+          <Text fontSize="30px">Transparency</Text>
+        </Box>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Image
+            src="money.png"
+            boxSize="80px"
+            border="1px solid #00ff0a"
+            p="20px"
+            borderRadius="50%"
+            bgGradient="radial( brand.100,black)"
+            m="20px"
+          />
+          <Text fontSize="30px">Affordability</Text>
+        </Box>
+        {/* </SimpleGrid> */}
       </Box>
 
       <Box
